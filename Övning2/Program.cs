@@ -1,4 +1,7 @@
 ﻿
+using System.Security.Cryptography;
+using System.Xml.Linq;
+
 while (true)
 {
     Console.WriteLine("\nHuvudmeny. Välj Funktion:");
@@ -7,7 +10,7 @@ while (true)
     Console.WriteLine("3. Ordmultiplikatorn");
     Console.WriteLine("4. Plocka ord ur en mening");
     Console.WriteLine("0. Avsluta programmet");
-    Console.Write("Ditt val: ");
+    Console.Write("\nDitt val: ");
 
     string val = Console.ReadLine();
 
@@ -82,21 +85,38 @@ while (true)
             Console.WriteLine("Skriv något du vill upprepa tio gånger");
             string upprepa = Console.ReadLine();
 
+            Console.WriteLine("");//Ny rad
+
             for (int i = 0; i < 10; i++)
-
+            {
                 Console.Write(upprepa);//Skriver på samma rad
+            }
 
-                break;
+            Console.WriteLine("");//Ny rad
+
+            break;
 
         case "4":
-            Console.WriteLine("Skriv en mening med minst tre ord.");
+            Console.WriteLine("Skriv en mening med minst tre ord.\n");
             string meningAttDela = Console.ReadLine();
 
             //Här delas meningen upp så fort det kommer ett mellanslag
             string[] enstakaOrd = meningAttDela.Split(" ");
-           
-            //Det tredje ordet skrivs ut    
-            Console.WriteLine("Det tredje ordet i meningen är: " + enstakaOrd[2]);
+
+            int antalOrd = enstakaOrd.Length;
+            //Console.WriteLine("Antal ord: " + antalOrd);
+
+            if (antalOrd < 3)
+            {
+                Console.WriteLine("\nDet finns inte tre ord i meningen");
+            }
+
+            else
+            {
+                //Det tredje ordet skrivs ut    
+                Console.WriteLine("\nDet tredje ordet i meningen är: " + enstakaOrd[2]);
+            }
+            
 
 
             break;
